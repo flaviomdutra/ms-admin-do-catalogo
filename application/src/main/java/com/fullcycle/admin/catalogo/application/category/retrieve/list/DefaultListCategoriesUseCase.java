@@ -6,7 +6,7 @@ import com.fullcycle.admin.catalogo.domain.pagination.Pagination;
 
 import java.util.Objects;
 
-public class DefaultListCategoriesUseCase extends  ListCategoriesUseCase {
+public class DefaultListCategoriesUseCase extends ListCategoriesUseCase {
 
     private final CategoryGateway categoryGateway;
 
