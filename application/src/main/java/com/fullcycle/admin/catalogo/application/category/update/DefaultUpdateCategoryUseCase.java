@@ -39,7 +39,7 @@ public class DefaultUpdateCategoryUseCase extends UpdateCategoryUseCase {
                 .validate(notification);
 
         return notification.hasErrors() ?
-               Left(notification) :
+                Left(notification) :
                 update(aCategory);
 
     }

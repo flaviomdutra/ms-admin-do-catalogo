@@ -1,6 +1,6 @@
 package com.fullcycle.admin.catalogo.domain.exceptions;
 
-public class NoStacktraceException  extends RuntimeException{
+public class NoStacktraceException extends RuntimeException {
 
     public NoStacktraceException(final String message) {
         this(message, null);
