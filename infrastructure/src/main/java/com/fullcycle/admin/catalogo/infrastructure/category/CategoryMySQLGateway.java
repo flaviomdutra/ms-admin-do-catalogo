@@ -14,9 +14,7 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.StreamSupport;
 
 import static com.fullcycle.admin.catalogo.infrastructure.utils.SpecificationUtils.like;
 

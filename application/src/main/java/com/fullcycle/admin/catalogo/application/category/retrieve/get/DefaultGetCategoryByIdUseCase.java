@@ -16,6 +16,12 @@ public class DefaultGetCategoryByIdUseCase extends GetCategoryByIdUseCase {
         this.categoryGateway = Objects.requireNonNull(categoryGateway);
     }
 
+    private static Supplier<DomainException> notFound(final CategoryID anId) {
+        return () -> DomainException.with(
+                new Error("Category with ID %s was not found".formatted(anId.getValue()))
+        );
+    }
+
     @Override
     public CategoryOutput execute(final String anIn) {
         final var anCategoryId = CategoryID.from(anIn);
@@ -23,11 +29,5 @@ public class DefaultGetCategoryByIdUseCase extends GetCategoryByIdUseCase {
         return this.categoryGateway.findById(anCategoryId)
                 .map(CategoryOutput::from)
                 .orElseThrow(notFound(anCategoryId));
-    }
-
-    private static Supplier<DomainException> notFound(final CategoryID anId) {
-        return () -> DomainException.with(
-                new Error("Category with ID %s was not found".formatted(anId.getValue()))
-        );
     }
 }
