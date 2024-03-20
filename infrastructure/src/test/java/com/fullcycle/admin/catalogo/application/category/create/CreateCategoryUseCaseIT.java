@@ -12,7 +12,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
 @IntegrationTest
-public class CreateCategoryUseCaseTestIT {
+public class CreateCategoryUseCaseIT {
 
     @Autowired
     private CreateCategoryUseCase useCase;

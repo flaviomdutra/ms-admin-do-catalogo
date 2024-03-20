@@ -19,7 +19,7 @@ import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.doThrow;
 
 @IntegrationTest
-public class GetCategoryByIdUseCaseTestIT {
+public class GetCategoryByIdUseCaseIT {
 
     @Autowired
     private GetCategoryByIdUseCase useCase;
