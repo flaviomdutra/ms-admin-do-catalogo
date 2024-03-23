@@ -56,16 +56,16 @@ public class CategoryResponseTest {
         final var expectedDeletedAt = Instant.now();
 
         final var json = """
-        {
-          "id": "%s",
-          "name": "%s",
-          "description": "%s",
-          "is_active": %s,
-          "created_at": "%s",
-          "deleted_at": "%s",
-          "updated_at": "%s"
-        }    
-        """.formatted(
+                {
+                  "id": "%s",
+                  "name": "%s",
+                  "description": "%s",
+                  "is_active": %s,
+                  "created_at": "%s",
+                  "deleted_at": "%s",
+                  "updated_at": "%s"
+                }    
+                """.formatted(
                 expectedId,
                 expectedName,
                 expectedDescription,
