@@ -14,6 +14,8 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
 
 import static com.fullcycle.admin.catalogo.infrastructure.utils.SpecificationUtils.like;
@@ -85,5 +87,10 @@ public class CategoryMySQLGateway implements CategoryGateway {
                         CategoryJpaEntity.from(aCategory)
                 )
                 .toAggregate();
+    }
+
+    @Override
+    public List<CategoryID> existsByIds(final Iterable<CategoryID> ids) {
+        return Collections.emptyList();
     }
 }
