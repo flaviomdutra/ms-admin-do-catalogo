@@ -144,10 +144,4 @@ public class ListGenreUseCaseTest extends UseCaseTest {
 
         Mockito.verify(genreGateway, times(1)).findAll(eq(aQuery));
     }
-
-    private List<String> asString(final List<CategoryID> categories) {
-        return categories.stream()
-                .map(CategoryID::getValue)
-                .toList();
-    }
 }
