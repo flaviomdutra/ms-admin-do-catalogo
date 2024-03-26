@@ -270,6 +270,4 @@ public class CreateGenreUseCaseTest extends UseCaseTest {
                 .map(CategoryID::getValue)
                 .toList();
     }
-
-
 }
