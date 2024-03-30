@@ -4,20 +4,20 @@ import com.fullcycle.admin.catalogo.domain.category.CategoryID;
 import com.fullcycle.admin.catalogo.domain.genre.Genre;
 import com.fullcycle.admin.catalogo.domain.genre.GenreID;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.Instant;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import static javax.persistence.CascadeType.ALL;
 import static javax.persistence.FetchType.EAGER;
 
-@Entity
+@Entity(name = "Genre")
 @Table(name = "genres")
 public class GenreJpaEntity {
+
+    @Id
     @Column(name = "id", nullable = false)
     private String id;
 
@@ -42,14 +42,21 @@ public class GenreJpaEntity {
     public GenreJpaEntity() {
     }
 
-    private GenreJpaEntity(final String anId, final String aName, final boolean isActive, final Instant aCreatedAt, final Instant anUpdatedAt, final Instant aDeletedAt) {
+    private GenreJpaEntity(
+            final String anId,
+            final String aName,
+            final boolean isActive,
+            final Instant createdAt,
+            final Instant updatedAt,
+            final Instant deletedAt
+    ) {
         this.id = anId;
         this.name = aName;
         this.active = isActive;
         this.categories = new HashSet<>();
-        this.createdAt = aCreatedAt;
-        this.updatedAt = anUpdatedAt;
-        this.deletedAt = aDeletedAt;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+        this.deletedAt = deletedAt;
     }
 
     public static GenreJpaEntity from(final Genre aGenre) {
@@ -62,7 +69,8 @@ public class GenreJpaEntity {
                 aGenre.getDeletedAt()
         );
 
-        aGenre.getCategories().forEach(anEntity::addCategory);
+        aGenre.getCategories()
+                .forEach(anEntity::addCategory);
 
         return anEntity;
     }
@@ -72,12 +80,11 @@ public class GenreJpaEntity {
                 GenreID.from(getId()),
                 getName(),
                 isActive(),
-                getCategories().stream().map(it -> CategoryID.from(it.getId().getCategoryId())).toList(),
+                getCategoryIDs(),
                 getCreatedAt(),
                 getUpdatedAt(),
                 getDeletedAt()
         );
-
     }
 
     private void addCategory(final CategoryID anId) {
@@ -92,55 +99,68 @@ public class GenreJpaEntity {
         return id;
     }
 
-    public void setId(String id) {
+    public GenreJpaEntity setId(String id) {
         this.id = id;
+        return this;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public GenreJpaEntity setName(String name) {
         this.name = name;
+        return this;
     }
 
     public boolean isActive() {
         return active;
     }
 
-    public void setActive(boolean active) {
+    public GenreJpaEntity setActive(boolean active) {
         this.active = active;
+        return this;
+    }
+
+    public List<CategoryID> getCategoryIDs() {
+        return getCategories().stream()
+                .map(it -> CategoryID.from(it.getId().getCategoryId()))
+                .toList();
     }
 
     public Set<GenreCategoryJpaEntity> getCategories() {
         return categories;
     }
 
-    public void setCategories(Set<GenreCategoryJpaEntity> categories) {
+    public GenreJpaEntity setCategories(Set<GenreCategoryJpaEntity> categories) {
         this.categories = categories;
+        return this;
     }
 
     public Instant getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Instant createdAt) {
+    public GenreJpaEntity setCreatedAt(Instant createdAt) {
         this.createdAt = createdAt;
+        return this;
     }
 
     public Instant getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(Instant updatedAt) {
+    public GenreJpaEntity setUpdatedAt(Instant updatedAt) {
         this.updatedAt = updatedAt;
+        return this;
     }
 
     public Instant getDeletedAt() {
         return deletedAt;
     }
 
-    public void setDeletedAt(Instant deletedAt) {
+    public GenreJpaEntity setDeletedAt(Instant deletedAt) {
         this.deletedAt = deletedAt;
+        return this;
     }
 }

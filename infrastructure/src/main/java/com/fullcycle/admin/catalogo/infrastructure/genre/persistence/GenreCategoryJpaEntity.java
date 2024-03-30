@@ -6,10 +6,12 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "genre_categories")
+@Table(name = "genres_categories")
 public class GenreCategoryJpaEntity {
+
     @EmbeddedId
     private GenreCategoryID id;
+
     @ManyToOne
     @MapsId("genreId")
     private GenreJpaEntity genre;
@@ -18,8 +20,8 @@ public class GenreCategoryJpaEntity {
     }
 
     private GenreCategoryJpaEntity(final GenreJpaEntity aGenre, final CategoryID aCategoryId) {
-        this.genre = aGenre;
         this.id = GenreCategoryID.from(aGenre.getId(), aCategoryId.getValue());
+        this.genre = aGenre;
     }
 
     public static GenreCategoryJpaEntity from(final GenreJpaEntity aGenre, final CategoryID aCategoryId) {
@@ -43,15 +45,17 @@ public class GenreCategoryJpaEntity {
         return id;
     }
 
-    public void setId(GenreCategoryID id) {
+    public GenreCategoryJpaEntity setId(GenreCategoryID id) {
         this.id = id;
+        return this;
     }
 
     public GenreJpaEntity getGenre() {
         return genre;
     }
 
-    public void setGenre(GenreJpaEntity genre) {
+    public GenreCategoryJpaEntity setGenre(GenreJpaEntity genre) {
         this.genre = genre;
+        return this;
     }
 }
