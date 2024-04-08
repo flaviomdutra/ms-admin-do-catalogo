@@ -2,6 +2,7 @@ package com.fullcycle.admin.catalogo.domain.castmember;
 
 import com.fullcycle.admin.catalogo.domain.AggregateRoot;
 import com.fullcycle.admin.catalogo.domain.exceptions.NotificationException;
+import com.fullcycle.admin.catalogo.domain.utils.InstantUtils;
 import com.fullcycle.admin.catalogo.domain.validation.ValidationHandler;
 import com.fullcycle.admin.catalogo.domain.validation.handler.Notification;
 
@@ -31,7 +32,7 @@ public class CastMember extends AggregateRoot<CastMemberID> {
 
     public static CastMember newMember(final String aName, final CastMemberType aType) {
         final var anId = CastMemberID.unique();
-        final var now = Instant.now();
+        final var now = InstantUtils.now();
 
         return new CastMember(
                 anId,
@@ -56,6 +57,14 @@ public class CastMember extends AggregateRoot<CastMemberID> {
 
     public Instant getUpdatedAt() {
         return updatedAt;
+    }
+
+    public CastMember update(final String aName, final CastMemberType aType) {
+        this.name = aName;
+        this.type = aType;
+        this.updatedAt = InstantUtils.now();
+        selfValidate();
+        return this;
     }
 
     @Override
