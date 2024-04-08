@@ -29,17 +29,15 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @Testcontainers
 public class GenreE2ETest implements MockDsl {
 
-    @Autowired
-    private MockMvc mvc;
-
-    @Autowired
-    private GenreRepository genreRepository;
-
     @Container
     private static final MySQLContainer MYSQL_CONTAINER = new MySQLContainer("mysql:latest")
             .withPassword("123456")
             .withUsername("root")
             .withDatabaseName("adm_videos");
+    @Autowired
+    private MockMvc mvc;
+    @Autowired
+    private GenreRepository genreRepository;
 
     @DynamicPropertySource
     public static void setDatasourceProperties(final DynamicPropertyRegistry registry) {
