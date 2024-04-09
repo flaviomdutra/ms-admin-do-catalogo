@@ -43,22 +43,6 @@ public class CastMember extends AggregateRoot<CastMemberID> {
         );
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public CastMemberType getType() {
-        return type;
-    }
-
-    public Instant getCreatedAt() {
-        return createdAt;
-    }
-
-    public Instant getUpdatedAt() {
-        return updatedAt;
-    }
-
     public static CastMember with(
             final CastMemberID anId,
             final String aName,
@@ -77,6 +61,22 @@ public class CastMember extends AggregateRoot<CastMemberID> {
                 aMember.createdAt,
                 aMember.updatedAt
         );
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public CastMemberType getType() {
+        return type;
+    }
+
+    public Instant getCreatedAt() {
+        return createdAt;
+    }
+
+    public Instant getUpdatedAt() {
+        return updatedAt;
     }
 
     public CastMember update(final String aName, final CastMemberType aType) {

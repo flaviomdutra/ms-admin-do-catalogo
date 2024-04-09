@@ -14,6 +14,11 @@ public final class DefaultCreateCastMemberUseCase extends CreateCastMemberUseCas
     public DefaultCreateCastMemberUseCase(final CastMemberGateway castMemberGateway) {
         this.castMemberGateway = Objects.requireNonNull(castMemberGateway);
     }
+
+    private static void notify(Notification notification) {
+        throw new NotificationException("Could not create Aggregate CastMember", notification);
+    }
+
     @Override
     public CreateCastMemberOutput execute(final CreateCastMemberCommand aCommand) {
         final var aName = aCommand.name();
@@ -27,9 +32,5 @@ public final class DefaultCreateCastMemberUseCase extends CreateCastMemberUseCas
         }
 
         return CreateCastMemberOutput.from(this.castMemberGateway.create(aMember));
-    }
-
-    private static void notify(Notification notification) {
-        throw new NotificationException("Could not create Aggregate CastMember", notification);
     }
 }

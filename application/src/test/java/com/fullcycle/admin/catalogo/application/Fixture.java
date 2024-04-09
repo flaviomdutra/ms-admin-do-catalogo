@@ -12,8 +12,8 @@ public final class Fixture {
     }
 
     public static final class CastMember {
-         public static CastMemberType type() {
-             return FAKER.options().option(CastMemberType.ACTOR, CastMemberType.DIRECTOR);
-         }
+        public static CastMemberType type() {
+            return FAKER.options().option(CastMemberType.ACTOR, CastMemberType.DIRECTOR);
+        }
     }
 }
