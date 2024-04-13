@@ -96,7 +96,7 @@ public class CastMember extends AggregateRoot<CastMemberID> {
         final var notification = Notification.create();
         validate(notification);
 
-        if (notification.hasErrors()) {
+        if (notification.hasError()) {
             throw new NotificationException("Failed to create a Aggregate CastMember", notification);
         }
 

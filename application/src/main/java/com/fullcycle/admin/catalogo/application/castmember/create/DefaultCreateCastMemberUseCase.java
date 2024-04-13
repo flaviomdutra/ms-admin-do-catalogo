@@ -7,7 +7,7 @@ import com.fullcycle.admin.catalogo.domain.validation.handler.Notification;
 
 import java.util.Objects;
 
-public final class DefaultCreateCastMemberUseCase extends CreateCastMemberUseCase {
+public non-sealed class DefaultCreateCastMemberUseCase extends CreateCastMemberUseCase {
 
     private final CastMemberGateway castMemberGateway;
 
@@ -27,7 +27,7 @@ public final class DefaultCreateCastMemberUseCase extends CreateCastMemberUseCas
         final var notification = Notification.create();
         final var aMember = notification.validate(() -> CastMember.newMember(aName, aType));
 
-        if (notification.hasErrors()) {
+        if (notification.hasError()) {
             notify(notification);
         }
 

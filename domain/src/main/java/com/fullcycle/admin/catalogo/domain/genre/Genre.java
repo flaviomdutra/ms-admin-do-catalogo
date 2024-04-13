@@ -153,7 +153,7 @@ public class Genre extends AggregateRoot<GenreID> {
         final var notification = Notification.create();
         validate(notification);
 
-        if (notification.hasErrors()) {
+        if (notification.hasError()) {
             throw new NotificationException("Failed to create a Aggregate Genre", notification);
         }
     }
