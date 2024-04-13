@@ -15,6 +15,17 @@
           </set>
         </option>
       </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="//wsl.localhost/Ubuntu/home/flaviodutra/Developer/codeflix/ms-admin-do-catalogo" />
+        <option name="modules">
+          <set>
+            <option value="//wsl.localhost/Ubuntu/home/flaviodutra/Developer/codeflix/ms-admin-do-catalogo" />
+            <option value="//wsl.localhost/Ubuntu/home/flaviodutra/Developer/codeflix/ms-admin-do-catalogo/application" />
+            <option value="//wsl.localhost/Ubuntu/home/flaviodutra/Developer/codeflix/ms-admin-do-catalogo/domain" />
+            <option value="//wsl.localhost/Ubuntu/home/flaviodutra/Developer/codeflix/ms-admin-do-catalogo/infrastructure" />
+          </set>
+        </option>
+      </GradleProjectSettings>
     </option>
   </component>
 </project>
