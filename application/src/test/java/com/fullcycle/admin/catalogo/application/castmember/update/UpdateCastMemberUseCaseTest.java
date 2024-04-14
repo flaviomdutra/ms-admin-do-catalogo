@@ -2,8 +2,6 @@ package com.fullcycle.admin.catalogo.application.castmember.update;
 
 import com.fullcycle.admin.catalogo.application.Fixture;
 import com.fullcycle.admin.catalogo.application.UseCaseTest;
-import com.fullcycle.admin.catalogo.application.castmember.udpate.DefaultUpdateCastMemberUseCase;
-import com.fullcycle.admin.catalogo.application.castmember.udpate.UpdateCastMemberCommand;
 import com.fullcycle.admin.catalogo.domain.castmember.CastMember;
 import com.fullcycle.admin.catalogo.domain.castmember.CastMemberGateway;
 import com.fullcycle.admin.catalogo.domain.castmember.CastMemberID;

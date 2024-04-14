@@ -1,4 +1,4 @@
-package com.fullcycle.admin.catalogo.application.castmember.udpate;
+package com.fullcycle.admin.catalogo.application.castmember.update;
 
 import com.fullcycle.admin.catalogo.application.UseCase;
 
