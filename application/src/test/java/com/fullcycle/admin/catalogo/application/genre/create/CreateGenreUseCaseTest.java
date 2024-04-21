@@ -37,18 +37,14 @@ public class CreateGenreUseCaseTest extends UseCaseTest {
     }
 
     @Test
-    public void givenAValidCommand_whenCallsCreateGenre_thenShouldReturnGenreId() {
+    public void givenAValidCommand_whenCallsCreateGenre_shouldReturnGenreId() {
         // given
-        final var expectedName = "Ação";
+        final var expectName = "Ação";
         final var expectedIsActive = true;
         final var expectedCategories = List.<CategoryID>of();
 
         final var aCommand =
-                CreateGenreCommand.with(
-                        expectedName,
-                        expectedIsActive,
-                        asString(expectedCategories)
-                );
+                CreateGenreCommand.with(expectName, expectedIsActive, asString(expectedCategories));
 
         when(genreGateway.create(any()))
                 .thenAnswer(returnsFirstArg());
@@ -61,13 +57,13 @@ public class CreateGenreUseCaseTest extends UseCaseTest {
         Assertions.assertNotNull(actualOutput.id());
 
         Mockito.verify(genreGateway, times(1)).create(argThat(aGenre ->
-                Objects.equals(expectedName, aGenre.getName()) &&
-                        Objects.equals(expectedIsActive, aGenre.isActive()) &&
-                        Objects.equals(expectedCategories, aGenre.getCategories()) &&
-                        Objects.nonNull(aGenre.getId()) &&
-                        Objects.nonNull(aGenre.getCreatedAt()) &&
-                        Objects.nonNull(aGenre.getUpdatedAt()) &&
-                        Objects.isNull(aGenre.getDeletedAt())
+                Objects.equals(expectName, aGenre.getName())
+                        && Objects.equals(expectedIsActive, aGenre.isActive())
+                        && Objects.equals(expectedCategories, aGenre.getCategories())
+                        && Objects.nonNull(aGenre.getId())
+                        && Objects.nonNull(aGenre.getCreatedAt())
+                        && Objects.nonNull(aGenre.getUpdatedAt())
+                        && Objects.isNull(aGenre.getDeletedAt())
         ));
     }
 
@@ -263,11 +259,5 @@ public class CreateGenreUseCaseTest extends UseCaseTest {
 
         Mockito.verify(categoryGateway, times(1)).existsByIds(any());
         Mockito.verify(genreGateway, times(0)).create(any());
-    }
-
-    private List<String> asString(final List<CategoryID> categories) {
-        return categories.stream()
-                .map(CategoryID::getValue)
-                .toList();
     }
 }
