@@ -149,7 +149,7 @@ public class UpdateCategoryUseCaseTest extends UseCaseTest {
     }
 
     @Test
-    public void givenAValidCommand_whenGatewayThrowsRandomException_shouldReturnAException() {
+    public void givenAValidCommand_whenGatewayThrowsRandomException_shouldReturnAException() throws InterruptedException {
         final var aCategory = Category.newCategory("Film", null, true);
 
         final var expectedId = aCategory.getId();
