@@ -18,7 +18,6 @@ import java.util.List;
 import static com.fullcycle.admin.catalogo.domain.Fixture.CastMembers.type;
 import static com.fullcycle.admin.catalogo.domain.Fixture.name;
 
-
 @MySQLGatewayTest
 public class CastMemberMySQLGatewayTest {
 
@@ -41,7 +40,6 @@ public class CastMemberMySQLGatewayTest {
         final var expectedType = type();
 
         final var aMember = CastMember.newMember(expectedName, expectedType);
-
         final var expectedId = aMember.getId();
 
         Assertions.assertEquals(0, castMemberRepository.count());
@@ -74,7 +72,6 @@ public class CastMemberMySQLGatewayTest {
         final var expectedType = CastMemberType.ACTOR;
 
         final var aMember = CastMember.newMember("vind", CastMemberType.DIRECTOR);
-
         final var expectedId = aMember.getId();
 
         final var currentMember = castMemberRepository.saveAndFlush(CastMemberJpaEntity.from(aMember));
@@ -107,6 +104,27 @@ public class CastMemberMySQLGatewayTest {
     }
 
     @Test
+    public void givenTwoCastMembersAndOnePersisted_whenCallsExistsByIds_shouldReturnPersistedID() {
+        // given
+        final var aMember = CastMember.newMember("Vin", CastMemberType.DIRECTOR);
+
+        final var expectedItems = 1;
+        final var expectedId = aMember.getId();
+
+        Assertions.assertEquals(0, castMemberRepository.count());
+
+        castMemberRepository.saveAndFlush(CastMemberJpaEntity.from(aMember));
+
+        // when
+        final var actualMember = castMemberGateway.existsByIds(List.of(CastMemberID.from("123"), expectedId));
+
+        // then
+        Assertions.assertEquals(expectedItems, actualMember.size());
+        Assertions.assertEquals(expectedId.getValue(), actualMember.get(0).getValue());
+    }
+
+
+    @Test
     public void givenAValidCastMember_whenCallsDeleteById_shouldDeleteIt() {
         // given
         final var aMember = CastMember.newMember(name(), type());
@@ -123,7 +141,7 @@ public class CastMemberMySQLGatewayTest {
     }
 
     @Test
-    public void givenAnInvalidCastMember_whenCallsDeleteById_shouldBeIgnored() {
+    public void givenAnInvalidId_whenCallsDeleteById_shouldBeIgnored() {
         // given
         final var aMember = CastMember.newMember(name(), type());
 
@@ -166,7 +184,6 @@ public class CastMemberMySQLGatewayTest {
     public void givenAnInvalidId_whenCallsFindById_shouldReturnEmpty() {
         // given
         final var aMember = CastMember.newMember(name(), type());
-        final var expectedId = aMember.getId();
 
         castMemberRepository.saveAndFlush(CastMemberJpaEntity.from(aMember));
 
