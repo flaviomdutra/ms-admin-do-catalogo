@@ -1,14 +1,13 @@
 package com.fullcycle.admin.catalogo.infrastructure.configuration;
 
-import com.fullcycle.admin.catalogo.infrastructure.configuration.properties.GoogleCloudProperties;
-import com.fullcycle.admin.catalogo.infrastructure.configuration.properties.GoogleStorageProperties;
+import com.fullcycle.admin.catalogo.infrastructure.configuration.properties.google.GoogleCloudProperties;
+import com.fullcycle.admin.catalogo.infrastructure.configuration.properties.google.GoogleStorageProperties;
 import com.google.api.gax.retrying.RetrySettings;
 import com.google.auth.Credentials;
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.cloud.http.HttpTransportOptions;
 import com.google.cloud.storage.Storage;
 import com.google.cloud.storage.StorageOptions;
-import io.grpc.Context;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

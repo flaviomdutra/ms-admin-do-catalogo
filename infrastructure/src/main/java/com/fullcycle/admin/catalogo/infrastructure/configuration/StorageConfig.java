@@ -1,7 +1,8 @@
 package com.fullcycle.admin.catalogo.infrastructure.configuration;
 
 
-import com.fullcycle.admin.catalogo.infrastructure.configuration.properties.GoogleStorageProperties;
+import com.fullcycle.admin.catalogo.infrastructure.configuration.properties.google.GoogleStorageProperties;
+import com.fullcycle.admin.catalogo.infrastructure.configuration.properties.storage.StorageProperties;
 import com.fullcycle.admin.catalogo.infrastructure.services.StorageService;
 import com.fullcycle.admin.catalogo.infrastructure.services.impl.GCStorageService;
 import com.fullcycle.admin.catalogo.infrastructure.services.local.InMemoryStorageService;
@@ -15,11 +16,11 @@ import org.springframework.context.annotation.Profile;
 @Configuration
 public class StorageConfig {
 
-//    @Bean
-//    @ConfigurationProperties(value = "storage.catalogo-videos")
-//    public StorageProperties storageProperties() {
-//        return new StorageProperties();
-//    }
+    @Bean
+    @ConfigurationProperties(value = "storage.catalogo-videos")
+    public StorageProperties storageProperties() {
+        return new StorageProperties();
+    }
 
     @Bean
     @Profile({"development", "test-integration", "test-e2e"})
