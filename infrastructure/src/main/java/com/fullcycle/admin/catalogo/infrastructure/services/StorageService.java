@@ -2,17 +2,16 @@ package com.fullcycle.admin.catalogo.infrastructure.services;
 
 import com.fullcycle.admin.catalogo.domain.video.Resource;
 
-import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 
 public interface StorageService {
 
-    void deleteAll(Collection<String> names);
+    void store(String id, Resource resource);
 
-    Resource get(String name);
+    Optional<Resource> get(String id);
 
     List<String> list(String prefix);
 
-    void store(String name, Resource resource);
-
+    void deleteAll(final List<String> ids);
 }
