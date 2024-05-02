@@ -1,5 +1,6 @@
 package com.fullcycle.admin.catalogo.e2e.category;
 
+import com.fullcycle.admin.catalogo.ApiTest;
 import com.fullcycle.admin.catalogo.E2ETest;
 import com.fullcycle.admin.catalogo.domain.category.CategoryID;
 import com.fullcycle.admin.catalogo.e2e.MockDsl;
@@ -26,15 +27,17 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @Testcontainers
 public class CategoryE2ETest implements MockDsl {
 
+    @Autowired
+    private MockMvc mvc;
+
+    @Autowired
+    private CategoryRepository categoryRepository;
+
     @Container
     private static final MySQLContainer MYSQL_CONTAINER = new MySQLContainer("mysql:latest")
             .withPassword("123456")
             .withUsername("root")
             .withDatabaseName("adm_videos");
-    @Autowired
-    private MockMvc mvc;
-    @Autowired
-    private CategoryRepository categoryRepository;
 
     @DynamicPropertySource
     public static void setDatasourceProperties(final DynamicPropertyRegistry registry) {
@@ -69,7 +72,6 @@ public class CategoryE2ETest implements MockDsl {
 
     @Test
     public void asACatalogAdminIShouldBeAbleToNavigateToAllCategories() throws Exception {
-
         Assertions.assertTrue(MYSQL_CONTAINER.isRunning());
         Assertions.assertEquals(0, categoryRepository.count());
 
@@ -174,6 +176,7 @@ public class CategoryE2ETest implements MockDsl {
         Assertions.assertEquals(0, categoryRepository.count());
 
         final var aRequest = get("/categories/123")
+                .with(ApiTest.ADMIN_JWT)
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON);
 
