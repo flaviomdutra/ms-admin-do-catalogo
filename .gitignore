@@ -3,6 +3,9 @@ build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
 !**/src/test/**/build/
+.env
+.env.local
+sandbox/.docker
 
 ### IntelliJ IDEA ###
 .idea
@@ -38,5 +41,3 @@ bin/
 ### Mac OS ###
 .DS_Store
 
-.env
-.docker/
