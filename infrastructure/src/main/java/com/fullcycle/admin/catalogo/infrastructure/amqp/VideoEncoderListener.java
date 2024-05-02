@@ -18,10 +18,8 @@ import java.util.Objects;
 @Component
 public class VideoEncoderListener {
 
-    private static final Logger log = LoggerFactory.getLogger(VideoEncoderListener.class);
-
     static final String LISTENER_ID = "videoEncodedListener";
-
+    private static final Logger log = LoggerFactory.getLogger(VideoEncoderListener.class);
     private final UpdateMediaStatusUseCase updateMediaStatusUseCase;
 
     public VideoEncoderListener(final UpdateMediaStatusUseCase updateMediaStatusUseCase) {

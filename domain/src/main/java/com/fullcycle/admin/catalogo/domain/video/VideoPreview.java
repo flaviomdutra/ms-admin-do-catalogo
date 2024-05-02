@@ -2,7 +2,7 @@ package com.fullcycle.admin.catalogo.domain.video;
 
 import java.time.Instant;
 
-public record  VideoPreview(
+public record VideoPreview(
         String id,
         String title,
         String description,

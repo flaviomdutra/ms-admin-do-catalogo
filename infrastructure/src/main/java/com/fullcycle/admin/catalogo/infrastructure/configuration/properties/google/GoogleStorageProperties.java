@@ -9,6 +9,12 @@ public class GoogleStorageProperties implements InitializingBean {
     private static final Logger log = LoggerFactory.getLogger(GoogleCloudProperties.class);
 
     private String bucket;
+    private int connectTimeout;
+    private int readTimeout;
+    private int retryDelay;
+    private int retryMaxAttempts;
+    private int retryMaxDelay;
+    private double retryMultiplier;
 
     public String getBucket() {
         return bucket;
@@ -72,13 +78,6 @@ public class GoogleStorageProperties implements InitializingBean {
         this.retryMultiplier = retryMultiplier;
         return this;
     }
-
-    private int connectTimeout;
-    private int readTimeout;
-    private int retryDelay;
-    private int retryMaxAttempts;
-    private int retryMaxDelay;
-    private double retryMultiplier;
 
     @Override
     public void afterPropertiesSet() {

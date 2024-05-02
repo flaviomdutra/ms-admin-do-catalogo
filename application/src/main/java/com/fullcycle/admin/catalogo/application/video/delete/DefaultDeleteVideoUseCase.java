@@ -10,6 +10,7 @@ public class DefaultDeleteVideoUseCase extends DeleteVideoUseCase {
 
     private final VideoGateway videoGateway;
     private final MediaResourceGateway mediaResourceGateway;
+
     public DefaultDeleteVideoUseCase(
             final VideoGateway videoGateway,
             final MediaResourceGateway mediaResourceGateway

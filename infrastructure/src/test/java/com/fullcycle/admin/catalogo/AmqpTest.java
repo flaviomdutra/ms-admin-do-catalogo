@@ -1,4 +1,3 @@
-
 package com.fullcycle.admin.catalogo;
 
 import com.fullcycle.admin.catalogo.infrastructure.configuration.WebServerConfig;

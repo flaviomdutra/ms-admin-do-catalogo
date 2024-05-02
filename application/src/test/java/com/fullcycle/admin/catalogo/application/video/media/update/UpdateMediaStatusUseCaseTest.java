@@ -1,4 +1,3 @@
-
 package com.fullcycle.admin.catalogo.application.video.media.update;
 
 import com.fullcycle.admin.catalogo.application.UseCaseTest;
